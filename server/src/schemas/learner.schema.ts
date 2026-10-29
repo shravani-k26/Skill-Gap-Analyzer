@@ -19,7 +19,11 @@ export const learnerProfileSchema = z.object({
 
 export const assessedSkillSchema = z.object({
   skill: objectIdSchema,
-  proficiencyLevel: z.number().int().min(1).max(5),
+  proficiencyLevel: z
+  .number()
+  .int()
+  .min(0, "Proficiency level must be at least 0")
+  .max(5, "Proficiency level must not exceed 5"),
 });
 
 export const createSkillAssessmentSchema = z.object({

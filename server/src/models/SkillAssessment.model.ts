@@ -24,11 +24,11 @@ const assessedSkillSchema = new Schema<IAssessedSkill>(
     proficiencyLevel: {
       type: Number,
       required: true,
-      min: 1,
+      min: 0,
       max: 5,
       validate: {
         validator: Number.isInteger,
-        message: "Proficiency level must be an integer from 1 to 5",
+        message: "Proficiency level must be an integer from 0 to 5",
       },
     },
   },

@@ -16,6 +16,7 @@ import type {
 import type { SkillAssessment } from "../../features/learner/types";
 
 const proficiencyLevels = [
+  { value: 0, label: "0 - No knowledge" },
   { value: 1, label: "1 - Beginner" },
   { value: 2, label: "2 - Basic" },
   { value: 3, label: "3 - Intermediate" },
