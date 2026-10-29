@@ -10,6 +10,8 @@ import {
   getLatestSkills,
 } from "../services/learner.service.js";
 
+import { analyzeSkillGaps } from "../services/skillGapAnalysis.service.js";
+
 import {
   learnerProfileSchema,
   createSkillAssessmentSchema,
@@ -154,6 +156,34 @@ export const getMySkills = asyncHandler(
       success: true,
       message: "Current skills retrieved successfully",
       data: result,
+    });
+  }
+);
+
+// Analyze the learner's skills against a selected job description.
+export const getMySkillGapAnalysis = asyncHandler(
+  async (req: Request, res: Response) => {
+    const userId = req.userId;
+
+    if (!userId) {
+      throw new ApiError(401, "Authentication required");
+    }
+
+    const jobDescriptionId = req.params.jobDescriptionId;
+
+    if (typeof jobDescriptionId !== "string") {
+      throw new ApiError(400, "Invalid job description ID");
+    }
+
+    const analysis = await analyzeSkillGaps(
+      userId,
+      jobDescriptionId
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: "Skill gap analysis completed successfully",
+      data: analysis,
     });
   }
 );

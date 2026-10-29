@@ -12,6 +12,7 @@ import LearnerProfilePage from "./pages/LearnerProfile/LearnerProfilePage";
 import SkillAssessmentPage from "./pages/SkillAssessment/SkillAssessmentPage";
 import RoleManagementPage from "./pages/RoleManagement/RoleManagementPage";
 import JobDescriptionPage from "./pages/JobDescription/JobDescriptionPage";
+import SkillGapAnalysisPage from "./pages/SkillGapAnalysis/SkillGapAnalysisPage";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -42,6 +43,10 @@ function App() {
           <Route
             path="/job-descriptions"
             element={<JobDescriptionPage />}
+          />
+          <Route
+            path="/skill-gap-analysis"
+            element={<SkillGapAnalysisPage />}
           />
         </Route>    
       </Route>

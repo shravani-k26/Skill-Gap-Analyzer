@@ -118,4 +118,48 @@ export const getSkillsByRole = async (roleName: string) => {
 };
 
 
+export const getMySkillGapAnalysis = async (
+  jobDescriptionId: string
+) => {
+  const response = await apiRequest<
+    ApiResponse<{
+      jobDescription: {
+        id: string;
+        title: string;
+        company?: string;
+        targetRole: string;
+      };
+      assessment: {
+        id: string;
+        assessedAt: string;
+      } | null;
+      summary: {
+        totalRequiredSkills: number;
+        highLearningPriority: number;
+        needsImprovement: number;
+        developingProficiency: number;
+        relativeStrength: number;
+        notAssessed: number;
+      };
+      skills: {
+        skillId: string;
+        skillName: string;
+        category: string;
+        proficiencyLevel: number | null;
+        proficiencyLabel: string;
+        status:
+          | "high_learning_priority"
+          | "needs_improvement"
+          | "developing_proficiency"
+          | "relative_strength"
+          | "not_assessed";
+      }[];
+    }>
+  >(
+    `/learners/me/skill-gap-analysis/${encodeURIComponent(jobDescriptionId)}`
+  );
+
+  return response.data;
+};
+
 
