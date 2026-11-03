@@ -18,6 +18,22 @@ import {
 } from "../schemas/learner.schema.js";
 
 import ApiError from "../errors/ApiError.js";
+import {
+  generateDependenciesForJobDescription,
+} from "../services/aiDependencyAnalysis.service.js";
+
+import {
+  getLearnerAIDependencySuggestions,
+  saveLearnerDependencyDecision,
+} from "../services/learnerDependencyDecision.service.js";
+
+import {
+  LearnerDependencyDecisionType,
+} from "../models/LearnerDependencyDecision.model.js";
+
+import {
+  compareSkillGapMethods,
+} from "../services/skillGapComparison.service.js";
 
 // Create or update the authenticated user's profile.
 export const saveProfile = asyncHandler(
@@ -184,6 +200,135 @@ export const getMySkillGapAnalysis = asyncHandler(
       success: true,
       message: "Skill gap analysis completed successfully",
       data: analysis,
+    });
+  }
+);
+
+// Generate AI dependency suggestions for a job description.
+export const generateMyAIDependencies = asyncHandler(
+  async (req: Request, res: Response) => {
+    const userId = req.userId;
+
+    if (!userId) {
+      throw new ApiError(401, "Authentication required");
+    }
+
+    const jobDescriptionId = req.params.jobDescriptionId;
+
+    if (typeof jobDescriptionId !== "string") {
+      throw new ApiError(400, "Invalid job description ID");
+    }
+
+    const result = await generateDependenciesForJobDescription(
+      jobDescriptionId
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: "AI dependency suggestions generated successfully",
+      data: result,
+    });
+  }
+);
+
+
+// Retrieve AI dependency suggestions for the authenticated learner.
+export const getMyAIDependencySuggestions = asyncHandler(
+  async (req: Request, res: Response) => {
+    const userId = req.userId;
+
+    if (!userId) {
+      throw new ApiError(401, "Authentication required");
+    }
+
+    const roleId = req.params.roleId;
+
+    if (typeof roleId !== "string") {
+      throw new ApiError(400, "Invalid role ID");
+    }
+
+    const suggestions = await getLearnerAIDependencySuggestions(
+      userId,
+      roleId
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: "AI dependency suggestions retrieved successfully",
+      data: suggestions,
+    });
+  }
+);
+
+// Accept or reject an AI dependency suggestion.
+export const decideMyAIDependency = asyncHandler(
+  async (req: Request, res: Response) => {
+    const userId = req.userId;
+
+    if (!userId) {
+      throw new ApiError(401, "Authentication required");
+    }
+
+    const roleId = req.params.roleId;
+    const dependencyId = req.params.dependencyId;
+    const decision = req.body.decision;
+
+    if (
+      typeof roleId !== "string" ||
+      typeof dependencyId !== "string"
+    ) {
+      throw new ApiError(400, "Invalid role ID or dependency ID");
+    }
+
+    if (
+      !Object.values(LearnerDependencyDecisionType).includes(decision)
+    ) {
+      throw new ApiError(
+        400,
+        "Decision must be either accepted or rejected"
+      );
+    }
+
+    const result = await saveLearnerDependencyDecision(
+      userId,
+      roleId,
+      dependencyId,
+      decision
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: `AI dependency ${decision} successfully`,
+      data: result,
+    });
+  }
+);
+
+
+// Compare the three skill gap analysis methods for research.
+export const getMySkillGapComparison = asyncHandler(
+  async (req: Request, res: Response) => {
+    const userId = req.userId;
+
+    if (!userId) {
+      throw new ApiError(401, "Authentication required");
+    }
+
+    const jobDescriptionId = req.params.jobDescriptionId;
+
+    if (typeof jobDescriptionId !== "string") {
+      throw new ApiError(400, "Invalid job description ID");
+    }
+
+    const comparison = await compareSkillGapMethods(
+      userId,
+      jobDescriptionId
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: "Skill gap comparison completed successfully",
+      data: comparison,
     });
   }
 );

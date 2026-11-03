@@ -10,7 +10,12 @@ import {
   getMyAssessmentById,
   getMySkills,
   getMySkillGapAnalysis,
+  generateMyAIDependencies,
+  getMyAIDependencySuggestions,
+  decideMyAIDependency,
+  getMySkillGapComparison,
 } from "../controllers/learner.controller.js";
+
 
 const router = Router();
 
@@ -29,6 +34,26 @@ router.get("/me/assessments/:id", getMyAssessmentById);
 router.get(
   "/me/skill-gap-analysis/:jobDescriptionId",
   getMySkillGapAnalysis
+);
+router.post(
+  "/me/ai-dependencies/:jobDescriptionId",
+  generateMyAIDependencies
+);
+// Retrieve AI suggestions for a role.
+router.get(
+  "/me/ai-dependencies/role/:roleId",
+  getMyAIDependencySuggestions
+);
+// Accept or reject an individual AI suggestion.
+router.put(
+  "/me/ai-dependencies/role/:roleId/:dependencyId/decision",
+  decideMyAIDependency
+);
+
+// Compare the three research methods.
+router.get(
+  "/me/skill-gap-comparison/:jobDescriptionId",
+  getMySkillGapComparison
 );
 
 export default router;

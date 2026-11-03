@@ -10,6 +10,156 @@ import type {
   Role,
 } from "./types";
 
+// --------------------------------------------------
+// 1. Skill Gap Analysis Types
+// --------------------------------------------------
+
+export type SkillGapStatus =
+  | "high_learning_priority"
+  | "needs_improvement"
+  | "developing_proficiency"
+  | "relative_strength"
+  | "not_assessed";
+
+export type SkillPriority =
+  | "critical"
+  | "high"
+  | "medium"
+  | "low"
+  | "assessment_needed";
+
+export type DependencyStrength =
+  | "strong"
+  | "moderate"
+  | "optional";
+
+export type DependencySource =
+  | "predefined"
+  | "ai";
+
+export type DependencyValidationStatus =
+  | "pending"
+  | "accepted"
+  | "rejected";
+
+export type DependencyRelationshipType =
+  | "prerequisite"
+  | "recommended";
+
+export interface AnalysisSkill {
+  skillId: string;
+  skillName: string;
+  category: string;
+  proficiencyLevel: number | null;
+  proficiencyLabel: string;
+  status: SkillGapStatus;
+  priority: SkillPriority;
+  priorityScore: number | null;
+  learningOrder: number | null;
+  prerequisiteSkills: string[];
+  blockedBy: string[];
+  learningReason: string;
+  learningStatus:
+  | "needs_learning"
+  | "continue_developing"
+  | "relative_strength"
+  | "assessment_needed";
+}
+
+export interface DependencyResult {
+  skillId: string;
+  skillName: string;
+  prerequisiteName: string;
+  prerequisiteSkillId: string | null;
+  prerequisiteProficiency: number | null;
+
+  relationshipType: DependencyRelationshipType;
+  strength: DependencyStrength;
+
+  source: DependencySource;
+  validationStatus: DependencyValidationStatus;
+
+  confidence: number | null;
+  explanation: string;
+
+  isPrerequisiteAssessed: boolean;
+  isReady: boolean;
+}
+
+export interface SkillGapAnalysis {
+  jobDescription: {
+    id: string;
+    title: string;
+    company?: string;
+    targetRole: string;
+  };
+
+  assessment: {
+    id: string;
+    assessedAt: string;
+  } | null;
+
+  summary: {
+    totalRequiredSkills: number;
+    highLearningPriority: number;
+    needsImprovement: number;
+    developingProficiency: number;
+    relativeStrength: number;
+    notAssessed: number;
+
+    priorityCounts: {
+      critical: number;
+      high: number;
+      medium: number;
+      low: number;
+      assessmentNeeded: number;
+    };
+  };
+
+  skills: AnalysisSkill[];
+  dependencies: DependencyResult[];
+}
+
+
+export interface ComparisonMethodResult {
+  methodName: string;
+  dependencyCount: number;
+  predefinedDependencyCount?: number;
+  acceptedAIDependencyCount?: number;
+  dependencies: DependencyResult[];
+  skills: AnalysisSkill[];
+}
+
+export interface SkillGapComparison {
+  jobDescription: {
+    id: string;
+    title: string;
+    company?: string;
+    targetRole: string;
+  };
+
+  assessment: {
+    id: string;
+    assessedAt: string;
+  } | null;
+
+  commonInputs: {
+    totalExtractedSkills: number;
+    totalAssessedSkills: number;
+    totalUnassessedSkills: number;
+  };
+
+  methods: {
+    proficiencyOnly: ComparisonMethodResult;
+    predefined: ComparisonMethodResult;
+    hybrid: ComparisonMethodResult;
+  };
+}
+
+// --------------------------------------------------
+// 2. Learner Profile
+// --------------------------------------------------
+
 // Get the authenticated learner's profile.
 export const getMyLearnerProfile = async () => {
   const response = await apiRequest<ApiResponse<LearnerProfile>>(
@@ -34,6 +184,10 @@ export const saveMyLearnerProfile = async (
   return response.data;
 };
 
+// --------------------------------------------------
+// 3. Roles and Skills
+// --------------------------------------------------
+
 // Get available roles from the existing Role Management API.
 export const getAvailableRoles = async () => {
   const response = await apiRequest<ApiResponse<Role[]>>(
@@ -51,6 +205,10 @@ export const getAvailableSkills = async () => {
 
   return response.data;
 };
+
+// --------------------------------------------------
+// 4. Skill Assessments
+// --------------------------------------------------
 
 // Submit a new assessment. Previous assessments are preserved.
 export const submitSkillAssessment = async (
@@ -101,6 +259,10 @@ export const getMyAssessmentById = async (id: string) => {
   return response.data;
 };
 
+// --------------------------------------------------
+// 5. Role Skill Requirements
+// --------------------------------------------------
+
 export interface RoleSkillRequirement {
   _id: string;
   role: string;
@@ -117,46 +279,34 @@ export const getSkillsByRole = async (roleName: string) => {
   return response.data;
 };
 
+// --------------------------------------------------
+// 6. Skill Gap Analysis
+// --------------------------------------------------
 
 export const getMySkillGapAnalysis = async (
   jobDescriptionId: string
-) => {
+): Promise<SkillGapAnalysis> => {
   const response = await apiRequest<
-    ApiResponse<{
-      jobDescription: {
-        id: string;
-        title: string;
-        company?: string;
-        targetRole: string;
-      };
-      assessment: {
-        id: string;
-        assessedAt: string;
-      } | null;
-      summary: {
-        totalRequiredSkills: number;
-        highLearningPriority: number;
-        needsImprovement: number;
-        developingProficiency: number;
-        relativeStrength: number;
-        notAssessed: number;
-      };
-      skills: {
-        skillId: string;
-        skillName: string;
-        category: string;
-        proficiencyLevel: number | null;
-        proficiencyLabel: string;
-        status:
-          | "high_learning_priority"
-          | "needs_improvement"
-          | "developing_proficiency"
-          | "relative_strength"
-          | "not_assessed";
-      }[];
-    }>
+    ApiResponse<SkillGapAnalysis>
   >(
-    `/learners/me/skill-gap-analysis/${encodeURIComponent(jobDescriptionId)}`
+    `/learners/me/skill-gap-analysis/${encodeURIComponent(
+      jobDescriptionId
+    )}`
+  );
+
+  return response.data;
+};
+
+
+export const getMySkillGapComparison = async (
+  jobDescriptionId: string
+): Promise<SkillGapComparison> => {
+  const response = await apiRequest<
+    ApiResponse<SkillGapComparison>
+  >(
+    `/learners/me/skill-gap-comparison/${encodeURIComponent(
+      jobDescriptionId
+    )}`
   );
 
   return response.data;

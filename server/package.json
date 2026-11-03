@@ -6,13 +6,15 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "seed": "tsx src/seeds/roleManagement.seed.ts"
+    "seed": "tsx src/seeds/roleManagement.seed.ts",
+    "seed:skill-dependencies": "tsx src/seeds/skillDependencies.seed.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/genai": "^2.32.0",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
