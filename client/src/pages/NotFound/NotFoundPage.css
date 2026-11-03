@@ -1,0 +1,231 @@
+@reference "../../styles/globals.css";
+
+/* Main page */
+
+.not-found-page {
+    @apply flex min-h-screen items-center justify-center overflow-hidden px-4 py-10 sm:px-6;
+    background:
+        radial-gradient(ellipse at 15% 15%, rgb(221 214 254 / 55%), transparent 35%),
+        radial-gradient(ellipse at 90% 85%, rgb(251 207 232 / 40%), transparent 32%),
+        #faf9ff;
+}
+
+.not-found-card {
+    @apply relative flex w-full max-w-2xl flex-col items-center overflow-hidden rounded-3xl px-5 py-8 text-center sm:px-12 sm:py-12;
+    background: rgb(255 255 255 / 92%);
+    border: 1px solid #eee7fc;
+    box-shadow: 0 24px 80px rgb(76 29 149 / 10%);
+}
+
+/* Decorative illustration */
+
+.not-found-illustration {
+    @apply relative mb-5 flex h-48 w-full max-w-md items-center justify-center sm:h-56;
+}
+
+.not-found-orbit {
+    @apply absolute rounded-full;
+    border: 1px dashed #d8c8fa;
+}
+
+.not-found-orbit-one {
+    @apply h-36 w-36 sm:h-44 sm:w-44;
+    animation: not-found-rotate 35s linear infinite;
+}
+
+.not-found-orbit-two {
+    @apply h-44 w-64 sm:h-52 sm:w-80;
+    border-color: #f0c9ec;
+    transform: rotate(-15deg);
+}
+
+.not-found-number {
+    @apply relative z-10 flex items-center justify-center gap-1 text-7xl font-black tracking-tighter sm:text-8xl;
+    color: #6d28d9;
+    text-shadow: 0 8px 24px rgb(109 40 217 / 12%);
+}
+
+.not-found-zero {
+    @apply relative flex h-20 w-20 items-center justify-center rounded-full sm:h-24 sm:w-24;
+    color: #a21caf;
+    background: linear-gradient(145deg, #f3e8ff, #fce7f3);
+    border: 5px solid white;
+    box-shadow:
+        0 0 0 2px #e9d5ff,
+        0 12px 28px rgb(109 40 217 / 12%);
+}
+
+.not-found-spark {
+    @apply absolute z-10 text-2xl;
+    color: #a855f7;
+}
+
+.not-found-spark-one {
+    @apply left-8 top-8;
+}
+
+.not-found-spark-two {
+    @apply right-8 top-12 text-3xl;
+    color: #db2777;
+}
+
+.not-found-spark-three {
+    @apply bottom-6 left-1/4 text-lg;
+    color: #c026d3;
+}
+
+.not-found-floating-icon {
+    @apply absolute z-20 flex h-10 w-10 items-center justify-center rounded-2xl font-bold shadow-lg;
+    background: white;
+    border: 1px solid #f0e7ff;
+}
+
+.not-found-floating-top {
+    @apply right-8 top-4 text-xl text-fuchsia-600 sm:right-14;
+    transform: rotate(12deg);
+}
+
+.not-found-floating-bottom {
+    @apply bottom-5 right-8 text-xl text-violet-700 sm:right-14;
+    transform: rotate(-12deg);
+}
+
+/* Text content */
+
+.not-found-badge {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-[10px] font-extrabold tracking-[0.2em] sm:text-xs;
+    color: #7c3aed;
+    background: #f3e8ff;
+    border: 1px solid #e9d5ff;
+}
+
+.not-found-badge-dot {
+    @apply h-2 w-2 rounded-full;
+    background: #c026d3;
+    box-shadow: 0 0 10px rgb(192 38 211 / 40%);
+}
+
+.not-found-card h1 {
+    @apply mt-5 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-4xl;
+    color: #251444;
+}
+
+.not-found-description {
+    @apply mt-4 max-w-md text-sm leading-7 sm:text-base;
+    color: #6b6480;
+}
+
+/* Buttons */
+
+.not-found-actions {
+    @apply mt-7 flex w-full max-w-md flex-col justify-center gap-3 sm:flex-row;
+}
+
+.not-found-home-button,
+.not-found-back-button {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+.not-found-home-button {
+    @apply text-white;
+    background: linear-gradient(100deg, #6d28d9, #a21caf);
+    box-shadow: 0 7px 18px rgb(109 40 217 / 22%);
+}
+
+.not-found-home-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 11px 24px rgb(109 40 217 / 28%);
+}
+
+.not-found-back-button {
+    @apply text-violet-700;
+    background: white;
+    border: 1px solid #ddd6fe;
+}
+
+.not-found-back-button:hover {
+    background: #f5f3ff;
+    transform: translateY(-2px);
+}
+
+.not-found-home-button:focus-visible,
+.not-found-back-button:focus-visible {
+    outline: 3px solid #c4b5fd;
+    outline-offset: 3px;
+}
+
+/* Footer */
+
+.not-found-divider {
+    @apply mt-8 w-full max-w-md;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e9d5ff, transparent);
+}
+
+.not-found-footer {
+    @apply mt-5 flex flex-wrap items-center justify-center gap-2 text-xs leading-6 sm:text-sm;
+    color: #827795;
+}
+
+.not-found-footer span {
+    color: #a855f7;
+}
+
+/* Animation */
+
+@keyframes not-found-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive layout */
+
+@media (max-width: 639px) {
+    .not-found-card {
+        @apply rounded-2xl px-5 py-7;
+    }
+
+    .not-found-illustration {
+        @apply h-44;
+    }
+
+    .not-found-number {
+        @apply text-7xl;
+    }
+
+    .not-found-zero {
+        @apply h-16 w-16;
+    }
+
+    .not-found-spark-one {
+        @apply left-2 top-5;
+    }
+
+    .not-found-spark-two {
+        @apply right-2 top-8;
+    }
+
+    .not-found-floating-top {
+        @apply right-2;
+    }
+
+    .not-found-floating-bottom {
+        @apply right-2;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .not-found-orbit-one {
+        animation: none;
+    }
+
+    .not-found-home-button,
+    .not-found-back-button {
+        transition: none;
+    }
+}

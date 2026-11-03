@@ -1,0 +1,942 @@
+@reference "../../styles/globals.css";
+
+
+.jd-page {
+    @apply min-h-screen px-4 py-8 text-slate-800 sm:px-6 lg:px-10;
+    background:
+        radial-gradient(ellipse at 5% 0%, rgb(139 92 246 / 9%), transparent 30%),
+        radial-gradient(ellipse at 100% 20%, rgb(217 70 239 / 7%), transparent 28%),
+        #f8f7fc;
+}
+
+.jd-container {
+    @apply mx-auto flex w-full max-w-7xl flex-col gap-8;
+}
+
+.jd-page button,
+.jd-page input,
+.jd-page select,
+.jd-page textarea {
+    font: inherit;
+}
+
+.jd-page button:focus-visible,
+.jd-page input:focus-visible,
+.jd-page select:focus-visible,
+.jd-page textarea:focus-visible,
+.jd-page label:has(.jd-file-input:focus-visible) {
+    outline: 3px solid rgb(139 92 246 / 35%);
+    outline-offset: 3px;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.jd-hero {
+    @apply relative flex items-center justify-between overflow-hidden rounded-3xl p-7 sm:p-10 lg:p-12;
+    min-height: 285px;
+    background: linear-gradient(120deg, #211044 0%, #5424a6 54%, #8439c7 100%);
+    box-shadow: 0 18px 45px rgb(76 29 149 / 17%);
+    isolation: isolate;
+}
+
+.jd-hero::before,
+.jd-hero::after {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.jd-hero::before {
+    width: 400px;
+    height: 400px;
+    top: -240px;
+    right: 15%;
+}
+
+.jd-hero::after {
+    width: 320px;
+    height: 320px;
+    bottom: -245px;
+    left: 35%;
+}
+
+.jd-hero-content {
+    @apply relative z-10 max-w-3xl;
+}
+
+.jd-eyebrow {
+    @apply mb-5 inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs font-bold tracking-widest;
+    color: #f1e8ff;
+    background: rgb(255 255 255 / 11%);
+    border: 1px solid rgb(255 255 255 / 14%);
+}
+
+.jd-eyebrow-dot {
+    @apply h-2 w-2 rounded-full;
+    background: #d8b4fe;
+    box-shadow: 0 0 12px rgb(216 180 254 / 80%);
+}
+
+.jd-hero h1 {
+    @apply text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl;
+    max-width: 650px;
+}
+
+.jd-hero h1 span {
+    color: #e9c8ff;
+}
+
+.jd-hero-content>p {
+    @apply mt-4 max-w-2xl text-sm leading-7 sm:text-base;
+    color: #e8dcfa;
+}
+
+.jd-hero-points {
+    @apply mt-6 flex flex-wrap gap-x-5 gap-y-3 text-xs font-medium sm:text-sm;
+    color: #f4eaff;
+}
+
+.jd-hero-points span {
+    @apply inline-flex items-center gap-2;
+}
+
+.jd-hero-points span::first-letter {
+    color: #d8b4fe;
+}
+
+/* Decorative illustration */
+
+.jd-hero-art {
+    @apply relative mr-4 hidden shrink-0 items-center justify-center lg:flex;
+    width: 220px;
+    height: 220px;
+}
+
+.jd-art-orbit {
+    @apply absolute rounded-full;
+    border: 1px solid rgb(255 255 255 / 18%);
+}
+
+.jd-art-orbit-one {
+    width: 205px;
+    height: 205px;
+}
+
+.jd-art-orbit-two {
+    width: 165px;
+    height: 165px;
+    border-style: dashed;
+    animation: jd-rotate 30s linear infinite;
+}
+
+.jd-art-document {
+    @apply relative flex flex-col items-start rounded-2xl p-5;
+    width: 145px;
+    min-height: 165px;
+    background: linear-gradient(145deg, #ffffff, #f2eaff);
+    box-shadow: 0 15px 40px rgb(24 9 54 / 30%);
+    transform: rotate(-5deg);
+}
+
+.jd-art-file-icon {
+    @apply mb-5 flex h-9 w-9 items-center justify-center rounded-xl text-xs font-extrabold;
+    color: #6d28d9;
+    background: #e9ddff;
+}
+
+.jd-art-line {
+    @apply mb-2 h-1.5 rounded-full;
+    width: 76%;
+    background: #d9cbed;
+}
+
+.jd-art-line-long {
+    width: 100%;
+    background: #b99be9;
+}
+
+.jd-art-line-medium {
+    width: 55%;
+}
+
+.jd-art-skill {
+    @apply mt-3 flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-bold;
+    color: #6b21a8;
+    background: #eadcff;
+}
+
+.jd-art-spark {
+    @apply absolute text-3xl;
+    color: #f5d0fe;
+}
+
+.jd-art-spark-one {
+    top: 8px;
+    right: 20px;
+}
+
+.jd-art-spark-two {
+    bottom: 15px;
+    left: 10px;
+}
+
+@keyframes jd-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================
+   SUMMARY CARDS
+========================================= */
+
+.jd-stats {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3;
+}
+
+.jd-stat-card {
+    @apply flex items-center gap-4 rounded-2xl border border-violet-100/80 bg-white p-5 sm:p-6;
+    box-shadow: 0 5px 20px rgb(37 18 68 / 3%);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.jd-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgb(37 18 68 / 7%);
+}
+
+.jd-stat-icon {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-2xl font-bold;
+}
+
+.jd-stat-icon-purple {
+    color: #7c3aed;
+    background: #f0e8ff;
+}
+
+.jd-stat-icon-pink {
+    color: #c026d3;
+    background: #fce7f8;
+}
+
+.jd-stat-icon-blue {
+    color: #4f46e5;
+    background: #e9eaff;
+}
+
+.jd-stat-card p {
+    @apply text-sm font-medium text-slate-500;
+}
+
+.jd-stat-card strong {
+    @apply mt-1 block text-2xl font-extrabold tracking-tight text-slate-900;
+}
+
+.jd-stat-card>div:last-child>span {
+    @apply mt-1 block text-xs text-slate-400;
+}
+
+/* =========================================
+   PANELS AND HEADINGS
+========================================= */
+
+.jd-panel {
+    @apply rounded-3xl border border-violet-100/80 bg-white p-5 sm:p-8 lg:p-9;
+    box-shadow: 0 8px 30px rgb(37 18 68 / 4%);
+}
+
+.jd-section-heading {
+    @apply mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-start;
+}
+
+.jd-section-kicker {
+    @apply mb-2 block text-xs font-extrabold tracking-[0.18em];
+    color: #8b5cf6;
+}
+
+.jd-section-heading h2 {
+    @apply text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl;
+}
+
+.jd-section-heading>div>p {
+    @apply mt-2 max-w-2xl text-sm leading-6 text-slate-500;
+}
+
+.jd-step-badge,
+.jd-count-badge,
+.jd-results-count {
+    @apply inline-flex w-fit shrink-0 items-center rounded-full px-3 py-2 text-xs font-bold;
+    color: #6d28d9;
+    background: #f2ebff;
+}
+
+/* =========================================
+   INPUT MODE SELECTOR
+========================================= */
+
+.jd-mode-switch {
+    @apply mb-8 grid grid-cols-1 gap-3 sm:grid-cols-2;
+}
+
+.jd-mode-option {
+    @apply flex min-w-0 items-center gap-3 rounded-2xl border p-4 text-left;
+    border-color: #e9e3f4;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.jd-mode-option:hover:not(:disabled) {
+    border-color: #c4b5fd;
+    transform: translateY(-1px);
+}
+
+.jd-mode-option.active {
+    border-color: #8b5cf6;
+    background: linear-gradient(110deg, #f8f4ff, #fff);
+    box-shadow: inset 0 0 0 1px rgb(139 92 246 / 12%);
+}
+
+.jd-mode-option:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.jd-mode-icon {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-lg font-extrabold;
+    color: #7c3aed;
+    background: #eee5ff;
+}
+
+.jd-mode-icon-pdf {
+    font-size: 11px;
+    color: #be185d;
+    background: #fce7f3;
+}
+
+.jd-mode-option>span:nth-child(2) {
+    @apply flex min-w-0 flex-1 flex-col gap-1;
+}
+
+.jd-mode-option strong {
+    @apply text-sm font-bold text-slate-800;
+}
+
+.jd-mode-option small {
+    @apply text-xs leading-5 text-slate-500;
+}
+
+.jd-mode-check {
+    @apply flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold;
+    color: white;
+    background: transparent;
+    border: 1px solid #ddd6e8;
+}
+
+.jd-mode-option.active .jd-mode-check {
+    background: #7c3aed;
+    border-color: #7c3aed;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.jd-form {
+    @apply flex flex-col gap-6;
+}
+
+.jd-form-grid {
+    @apply grid grid-cols-1 gap-x-5 gap-y-6 md:grid-cols-2;
+}
+
+.jd-field {
+    @apply flex min-w-0 flex-col gap-2;
+}
+
+.jd-field-full {
+    @apply md:col-span-2;
+}
+
+.jd-field label {
+    @apply text-sm font-bold text-slate-700;
+}
+
+.jd-field label>span,
+.jd-form-actions>p>span {
+    color: #e11d48;
+}
+
+.jd-field label small {
+    @apply font-normal text-slate-400;
+}
+
+.jd-field input:not([type="file"]),
+.jd-field select,
+.jd-field textarea {
+    @apply w-full rounded-xl border px-4 py-3 text-sm text-slate-800;
+    border-color: #e5deef;
+    background: #fff;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.jd-field input:not([type="file"]),
+.jd-field select {
+    min-height: 48px;
+}
+
+.jd-field textarea {
+    min-height: 180px;
+    resize: vertical;
+    line-height: 1.75;
+}
+
+.jd-field input::placeholder,
+.jd-field textarea::placeholder {
+    color: #a49ab4;
+}
+
+.jd-field input:hover:not(:disabled),
+.jd-field select:hover:not(:disabled),
+.jd-field textarea:hover:not(:disabled) {
+    border-color: #c4b5fd;
+}
+
+.jd-field input:focus,
+.jd-field select:focus,
+.jd-field textarea:focus {
+    border-color: #8b5cf6;
+    outline: none;
+    box-shadow: 0 0 0 4px rgb(139 92 246 / 10%);
+}
+
+.jd-field input:disabled,
+.jd-field select:disabled,
+.jd-field textarea:disabled {
+    cursor: not-allowed;
+    background: #f8f7fb;
+    opacity: 0.75;
+}
+
+.jd-field select {
+    cursor: pointer;
+}
+
+.jd-field-note {
+    @apply text-xs leading-5;
+    color: #b45309;
+}
+
+.jd-label-row,
+.jd-field-footer {
+    @apply flex flex-wrap items-center justify-between gap-2;
+}
+
+.jd-character-count {
+    @apply text-xs tabular-nums;
+    color: #8b7e9f;
+}
+
+.jd-field-footer {
+    @apply text-xs;
+    color: #9588a6;
+}
+
+.jd-field-footer span:last-child {
+    color: #7c3aed;
+}
+
+/* PDF upload */
+
+.jd-upload-zone {
+    @apply flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-5 py-8 text-center;
+    border-color: #d8c8f5;
+    background: linear-gradient(145deg, #fbf9ff, #f8f3ff);
+    transition: border-color 180ms ease, background 180ms ease;
+}
+
+.jd-upload-zone:hover {
+    border-color: #8b5cf6;
+    background: #f4edff;
+}
+
+.jd-upload-selected {
+    border-color: #a78bfa;
+    background: #f4edff;
+}
+
+.jd-file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+.jd-upload-icon {
+    @apply mb-3 flex h-12 w-12 items-center justify-center rounded-2xl text-2xl font-bold;
+    color: #7c3aed;
+    background: #e9ddff;
+}
+
+.jd-upload-zone>strong {
+    @apply text-sm font-bold text-slate-800;
+}
+
+.jd-upload-zone>span:not(.jd-upload-icon) {
+    @apply mt-1 text-sm text-slate-500;
+}
+
+.jd-upload-zone>small {
+    @apply mt-3 rounded-full px-3 py-1 text-xs;
+    color: #7c3aed;
+    background: #ede5ff;
+}
+
+.jd-file-preview {
+    @apply mt-3 flex items-center gap-3 rounded-xl border p-3;
+    border-color: #e7ddf7;
+    background: #fcfaff;
+}
+
+.jd-file-badge {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-xs font-extrabold;
+    color: #be185d;
+    background: #fce7f3;
+}
+
+.jd-file-details {
+    @apply flex min-w-0 flex-1 flex-col gap-1;
+}
+
+.jd-file-details strong {
+    @apply truncate text-sm font-bold text-slate-800;
+}
+
+.jd-file-details>span {
+    @apply text-xs text-slate-500;
+}
+
+.jd-remove-file {
+    @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xl;
+    color: #9f1239;
+    background: #fff1f2;
+    cursor: pointer;
+}
+
+.jd-remove-file:hover:not(:disabled) {
+    background: #ffe4e6;
+}
+
+.jd-remove-file:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Form actions */
+
+.jd-form-actions {
+    @apply flex flex-col-reverse items-stretch justify-between gap-4 border-t pt-5 sm:flex-row sm:items-center;
+    border-color: #f0eaf6;
+}
+
+.jd-form-actions>p {
+    @apply text-xs text-slate-400;
+}
+
+.jd-primary-button {
+    @apply inline-flex min-h-12 items-center justify-center gap-3 rounded-xl px-6 py-3 text-sm font-bold text-white;
+    background: linear-gradient(110deg, #6d28d9, #9333ea);
+    box-shadow: 0 7px 16px rgb(109 40 217 / 20%);
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.jd-primary-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 11px 22px rgb(109 40 217 / 26%);
+}
+
+.jd-primary-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+.jd-primary-button>span:last-child {
+    font-size: 18px;
+}
+
+.jd-button-spinner,
+.jd-spinner {
+    display: inline-block;
+    border: 2px solid rgb(255 255 255 / 35%);
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: jd-spin 700ms linear infinite;
+}
+
+.jd-button-spinner {
+    width: 16px;
+    height: 16px;
+}
+
+.jd-spinner {
+    width: 36px;
+    height: 36px;
+    border-color: #ddd6fe;
+    border-top-color: #7c3aed;
+}
+
+@keyframes jd-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================
+   ALERTS
+========================================= */
+
+.jd-alert {
+    @apply flex items-center gap-3 rounded-2xl border px-4 py-3;
+}
+
+.jd-alert p {
+    @apply flex-1 text-sm leading-6;
+    overflow-wrap: anywhere;
+}
+
+.jd-alert-error {
+    color: #9f1239;
+    border-color: #fecdd3;
+    background: #fff1f2;
+}
+
+.jd-alert-success {
+    color: #166534;
+    border-color: #bbf7d0;
+    background: #f0fdf4;
+}
+
+.jd-alert-icon {
+    @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-extrabold;
+    background: rgb(255 255 255 / 75%);
+}
+
+.jd-alert-close {
+    @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xl;
+    cursor: pointer;
+}
+
+.jd-alert-close:hover {
+    background: rgb(0 0 0 / 5%);
+}
+
+/* =========================================
+   SAVED JOB DESCRIPTIONS
+========================================= */
+
+.jd-library-section {
+    @apply flex flex-col gap-2;
+}
+
+.jd-library-heading {
+    @apply mb-4;
+}
+
+.jd-job-grid {
+    @apply grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3;
+}
+
+.jd-job-card {
+    @apply flex min-w-0 flex-col rounded-2xl border border-violet-100 bg-white p-5;
+    box-shadow: 0 5px 20px rgb(37 18 68 / 3%);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.jd-job-card:hover {
+    transform: translateY(-3px);
+    border-color: #d8c4ff;
+    box-shadow: 0 14px 28px rgb(37 18 68 / 7%);
+}
+
+.jd-job-card-top {
+    @apply flex items-center justify-between gap-3;
+}
+
+.jd-job-type {
+    @apply inline-flex rounded-full px-2.5 py-1.5 text-[10px] font-extrabold tracking-wider;
+    color: #6d28d9;
+    background: #f0e8ff;
+}
+
+.jd-job-type-pdf {
+    color: #be185d;
+    background: #fce7f3;
+}
+
+.jd-job-symbol {
+    @apply flex h-8 w-8 items-center justify-center rounded-full text-sm;
+    color: #8b5cf6;
+    background: #f7f3ff;
+}
+
+.jd-job-card h3 {
+    @apply mt-4 break-words text-lg font-extrabold leading-snug text-slate-900;
+}
+
+.jd-job-company {
+    @apply mt-1 break-words text-sm text-slate-500;
+}
+
+.jd-job-meta {
+    @apply mt-5 flex flex-col items-start gap-2;
+}
+
+.jd-meta-label {
+    @apply text-[10px] font-extrabold tracking-widest text-slate-400;
+}
+
+.jd-role-chip {
+    @apply max-w-full rounded-lg px-3 py-1.5 text-xs font-semibold;
+    color: #6d28d9;
+    background: #f5f0ff;
+    overflow-wrap: anywhere;
+}
+
+.jd-original-file {
+    @apply mt-4 flex min-w-0 items-center gap-2 text-xs text-slate-500;
+}
+
+.jd-original-file span {
+    @apply shrink-0 text-base;
+    color: #8b5cf6;
+}
+
+.jd-original-file {
+    overflow-wrap: anywhere;
+}
+
+.jd-job-footer {
+    @apply mt-5 flex flex-col items-start justify-between gap-4 border-t pt-4 sm:flex-row sm:items-center;
+    border-color: #f0eaf6;
+}
+
+.jd-job-date {
+    @apply inline-flex items-center gap-2 text-xs text-slate-400;
+}
+
+.jd-job-date span {
+    @apply text-base;
+}
+
+.jd-extract-button {
+    @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-bold;
+    color: #6d28d9;
+    background: #f1eaff;
+    cursor: pointer;
+    transition: color 180ms ease, background 180ms ease;
+}
+
+.jd-extract-button:hover:not(:disabled) {
+    color: white;
+    background: #7c3aed;
+}
+
+.jd-extract-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.jd-extract-button .jd-button-spinner {
+    border-color: rgb(124 58 237 / 25%);
+    border-top-color: #7c3aed;
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.jd-empty-state {
+    @apply flex flex-col items-center rounded-3xl border border-dashed px-6 py-12 text-center sm:py-16;
+    border-color: #dcd0ef;
+    background: rgb(255 255 255 / 75%);
+}
+
+.jd-empty-icon {
+    @apply flex h-16 w-16 items-center justify-center rounded-2xl text-3xl;
+    color: #7c3aed;
+    background: #f0e8ff;
+}
+
+.jd-empty-state h3 {
+    @apply mt-5 text-lg font-extrabold text-slate-900;
+}
+
+.jd-empty-state p {
+    @apply mt-2 max-w-lg text-sm leading-6 text-slate-500;
+}
+
+/* =========================================
+   EXTRACTED SKILLS
+========================================= */
+
+.jd-results-panel {
+    scroll-margin-top: 24px;
+}
+
+.jd-skills-summary {
+    @apply mb-6 flex items-center gap-4 rounded-2xl border p-4 sm:p-5;
+    border-color: #e4d6ff;
+    background: linear-gradient(110deg, #faf7ff, #fff);
+}
+
+.jd-skills-summary-icon {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-xl;
+    color: #7c3aed;
+    background: #eadfff;
+}
+
+.jd-skills-summary strong {
+    @apply text-sm font-extrabold text-slate-800;
+}
+
+.jd-skills-summary p {
+    @apply mt-1 text-xs leading-5 text-slate-500;
+}
+
+.jd-skill-list {
+    @apply flex flex-wrap gap-3;
+}
+
+.jd-skill-tag {
+    @apply inline-flex max-w-full flex-wrap items-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold;
+    color: #5b21b6;
+    border-color: #e4d8fa;
+    background: #faf7ff;
+    overflow-wrap: anywhere;
+}
+
+.jd-skill-tag>span {
+    @apply text-xs font-extrabold;
+    color: #8b5cf6;
+}
+
+.jd-skill-tag small {
+    @apply rounded-md px-2 py-1 text-[10px] font-semibold;
+    color: #7e22ce;
+    background: #efe5ff;
+}
+
+.jd-no-skills {
+    @apply flex flex-col items-center rounded-2xl px-5 py-10 text-center;
+    background: #faf8fd;
+}
+
+.jd-no-skills>span {
+    @apply text-3xl;
+    color: #8b5cf6;
+}
+
+.jd-no-skills h3 {
+    @apply mt-3 text-base font-bold text-slate-800;
+}
+
+.jd-no-skills p {
+    @apply mt-2 max-w-xl text-sm leading-6 text-slate-500;
+}
+
+/* =========================================
+   LOADING
+========================================= */
+
+.jd-loading {
+    @apply flex min-h-[60vh] flex-col items-center justify-center text-center;
+}
+
+.jd-loading h2 {
+    @apply mt-5 text-lg font-extrabold text-slate-900;
+}
+
+.jd-loading p {
+    @apply mt-2 text-sm text-slate-500;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 640px) {
+    .jd-page {
+        @apply px-3 py-5;
+    }
+
+    .jd-container {
+        @apply gap-5;
+    }
+
+    .jd-hero {
+        @apply rounded-2xl p-6;
+        min-height: auto;
+    }
+
+    .jd-hero h1 {
+        @apply text-3xl;
+    }
+
+    .jd-hero-content>p {
+        @apply text-sm leading-6;
+    }
+
+    .jd-hero-points {
+        @apply flex-col gap-2;
+    }
+
+    .jd-panel {
+        @apply rounded-2xl p-4;
+    }
+
+    .jd-stat-card {
+        @apply p-4;
+    }
+
+    .jd-section-heading h2 {
+        @apply text-xl;
+    }
+
+    .jd-form-actions {
+        @apply gap-3;
+    }
+
+    .jd-primary-button {
+        @apply w-full;
+    }
+
+    .jd-job-footer {
+        @apply items-stretch;
+    }
+
+    .jd-extract-button {
+        @apply w-full;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .jd-page *,
+    .jd-page *::before,
+    .jd-page *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

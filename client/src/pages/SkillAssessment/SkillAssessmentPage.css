@@ -1,0 +1,795 @@
+@reference "../../styles/globals.css";
+
+/* Page background */
+
+.assessment-page {
+    @apply min-h-screen px-4 py-8 text-slate-800 sm:px-6 lg:px-8;
+    background:
+        radial-gradient(ellipse at 8% 5%, rgb(221 214 254 / 35%), transparent 34%),
+        radial-gradient(ellipse at 95% 28%, rgb(251 207 232 / 24%), transparent 30%),
+        #f8f7fc;
+}
+
+.assessment-container {
+    @apply mx-auto flex w-full max-w-7xl flex-col gap-7;
+}
+
+/* Hero */
+
+.assessment-hero {
+    @apply relative flex items-center justify-between overflow-hidden rounded-3xl px-6 py-9 text-white shadow-xl sm:px-10 sm:py-12 lg:px-12;
+    background: linear-gradient(120deg, #4c1d95 0%, #6d28d9 47%, #a21caf 100%);
+}
+
+.assessment-hero::before {
+    content: "";
+    @apply pointer-events-none absolute -right-20 -top-36 h-80 w-80 rounded-full;
+    border: 1px solid rgb(255 255 255 / 16%);
+    box-shadow:
+        0 0 0 35px rgb(255 255 255 / 4%),
+        0 0 0 70px rgb(255 255 255 / 3%);
+}
+
+.assessment-hero::after {
+    content: "";
+    @apply pointer-events-none absolute -bottom-24 left-1/3 h-48 w-48 rounded-full;
+    background: rgb(255 255 255 / 5%);
+    filter: blur(2px);
+}
+
+.assessment-hero-content {
+    @apply relative z-10 max-w-2xl;
+}
+
+.assessment-eyebrow {
+    @apply mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-bold tracking-widest;
+    background: rgb(255 255 255 / 12%);
+    border: 1px solid rgb(255 255 255 / 15%);
+}
+
+.eyebrow-dot {
+    @apply h-2 w-2 rounded-full bg-fuchsia-300;
+    box-shadow: 0 0 10px rgb(249 168 212 / 80%);
+}
+
+.assessment-hero h1 {
+    @apply text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl;
+}
+
+.assessment-hero-description {
+    @apply mt-4 max-w-xl text-sm leading-7 sm:text-base;
+    color: rgb(255 255 255 / 83%);
+}
+
+.assessment-role-chip {
+    @apply mt-7 inline-flex items-center gap-3 rounded-2xl px-4 py-3;
+    background: rgb(255 255 255 / 12%);
+    border: 1px solid rgb(255 255 255 / 20%);
+    backdrop-filter: blur(10px);
+}
+
+.role-chip-icon {
+    @apply flex h-11 w-11 items-center justify-center rounded-xl text-2xl;
+    background: rgb(255 255 255 / 16%);
+}
+
+.assessment-role-chip small,
+.assessment-role-chip strong {
+    @apply block;
+}
+
+.assessment-role-chip small {
+    @apply mb-1 text-[10px] font-bold tracking-widest;
+    color: rgb(255 255 255 / 70%);
+}
+
+.assessment-role-chip strong {
+    @apply text-sm font-bold sm:text-base;
+}
+
+.assessment-hero-art {
+    @apply relative mr-8 hidden h-48 w-48 shrink-0 items-center justify-center md:flex lg:mr-14 lg:h-56 lg:w-56;
+}
+
+.hero-orbit {
+    @apply absolute rounded-full;
+    border: 1px solid rgb(255 255 255 / 25%);
+}
+
+.hero-orbit-one {
+    @apply h-36 w-36 lg:h-44 lg:w-44;
+}
+
+.hero-orbit-two {
+    @apply h-48 w-48 lg:h-56 lg:w-56;
+    border-style: dashed;
+    animation: orbit-spin 35s linear infinite;
+}
+
+.hero-center-icon {
+    @apply flex h-24 w-24 items-center justify-center rounded-3xl text-5xl shadow-2xl lg:h-28 lg:w-28;
+    background: linear-gradient(145deg, rgb(255 255 255 / 30%), rgb(255 255 255 / 8%));
+    border: 1px solid rgb(255 255 255 / 30%);
+    backdrop-filter: blur(12px);
+}
+
+.hero-floating {
+    @apply absolute flex h-10 min-w-10 items-center justify-center rounded-xl px-2 font-bold shadow-lg;
+    color: #6d28d9;
+    background: white;
+}
+
+.hero-floating-one {
+    @apply -right-1 top-5;
+}
+
+.hero-floating-two {
+    @apply -left-2 top-1/2 text-xl;
+}
+
+.hero-floating-three {
+    @apply bottom-3 right-5;
+    color: #15803d;
+}
+
+@keyframes orbit-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Overview cards */
+
+.assessment-overview {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3;
+}
+
+.overview-card {
+    @apply flex min-w-0 items-center gap-4 rounded-2xl p-5 sm:p-6;
+    background: white;
+    border: 1px solid #eeeaf7;
+    box-shadow: 0 5px 20px rgb(49 24 92 / 4%);
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.overview-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgb(49 24 92 / 8%);
+}
+
+.overview-icon {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-2xl font-bold;
+}
+
+.overview-icon-purple {
+    color: #7c3aed;
+    background: #f3e8ff;
+}
+
+.overview-icon-pink {
+    color: #c026d3;
+    background: #fae8ff;
+}
+
+.overview-icon-blue {
+    color: #4f46e5;
+    background: #e0e7ff;
+}
+
+.overview-label,
+.overview-caption {
+    @apply block;
+}
+
+.overview-label {
+    @apply text-sm font-medium text-slate-500;
+}
+
+.overview-value {
+    @apply mt-1 block text-3xl font-extrabold tracking-tight text-slate-900;
+}
+
+.overview-total {
+    @apply text-lg font-semibold text-slate-400;
+}
+
+.overview-caption {
+    @apply mt-1 text-xs text-slate-500;
+}
+
+.overview-progress-card {
+    @apply sm:col-span-2 xl:col-span-1;
+}
+
+.overview-progress-content {
+    @apply min-w-0 flex-1;
+}
+
+.overview-progress-heading {
+    @apply flex items-center justify-between gap-3;
+}
+
+.overview-progress-heading strong {
+    @apply text-lg font-extrabold text-violet-700;
+}
+
+.assessment-progress-track,
+.latest-skill-track {
+    @apply overflow-hidden rounded-full;
+    background: #ede9fe;
+}
+
+.assessment-progress-track {
+    @apply mt-3 h-2.5;
+}
+
+.assessment-progress-fill {
+    @apply h-full rounded-full;
+    background: linear-gradient(90deg, #7c3aed, #c026d3);
+    transition: width 300ms ease;
+}
+
+/* Alerts */
+
+.assessment-alert {
+    @apply flex items-start gap-3 rounded-2xl px-4 py-3 text-sm;
+}
+
+.assessment-alert>span {
+    @apply flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-bold;
+}
+
+.assessment-alert p {
+    @apply min-w-0 leading-6;
+}
+
+.assessment-alert-error {
+    @apply border border-rose-200 text-rose-800;
+    background: #fff1f2;
+}
+
+.assessment-alert-error>span {
+    background: #ffe4e6;
+}
+
+.assessment-alert-success {
+    @apply border border-emerald-200 text-emerald-800;
+    background: #ecfdf5;
+}
+
+.assessment-alert-success>span {
+    background: #d1fae5;
+}
+
+/* Main panels */
+
+.assessment-panel {
+    @apply min-w-0 rounded-3xl p-5 sm:p-7 lg:p-8;
+    background: white;
+    border: 1px solid #eeeaf7;
+    box-shadow: 0 7px 28px rgb(49 24 92 / 4%);
+}
+
+.panel-heading {
+    @apply flex flex-col justify-between gap-4 sm:flex-row sm:items-start;
+}
+
+.section-kicker {
+    @apply text-[10px] font-extrabold tracking-[0.2em] text-violet-600;
+}
+
+.panel-heading h2 {
+    @apply mt-2 text-2xl font-extrabold tracking-tight text-slate-900;
+}
+
+.panel-heading p {
+    @apply mt-2 text-sm leading-6 text-slate-500;
+}
+
+.panel-count {
+    @apply self-start rounded-full px-3 py-2 text-xs font-bold text-violet-700;
+    background: #f3e8ff;
+}
+
+/* Proficiency guide */
+
+.proficiency-guide {
+    @apply mt-6 grid grid-cols-5 gap-2 rounded-2xl p-3 sm:gap-4 sm:p-4;
+    background: #faf9ff;
+    border: 1px solid #f0ebfa;
+}
+
+.guide-level {
+    @apply flex flex-col items-center gap-2 text-center text-[10px] font-semibold text-slate-500 sm:flex-row sm:justify-center sm:text-xs;
+}
+
+.guide-number {
+    @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs font-extrabold sm:h-8 sm:w-8;
+}
+
+.level-1 {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
+.level-2 {
+    color: #c2410c;
+    background: #ffedd5;
+}
+
+.level-3 {
+    color: #a16207;
+    background: #fef3c7;
+}
+
+.level-4 {
+    color: #047857;
+    background: #d1fae5;
+}
+
+.level-5 {
+    color: #6d28d9;
+    background: #ede9fe;
+}
+
+/* Individual skill cards */
+
+.assessment-skill-list {
+    @apply mt-5 flex flex-col gap-4;
+}
+
+.skill-rating-card {
+    @apply min-w-0 rounded-2xl p-4 sm:p-5;
+    border: 1px solid #eeeaf7;
+    background: linear-gradient(145deg, #fff, #fdfcff);
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.skill-rating-card:focus-within {
+    border-color: #c4b5fd;
+    box-shadow: 0 0 0 3px rgb(139 92 246 / 9%);
+}
+
+.skill-card-top {
+    @apply flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.skill-identity {
+    @apply flex min-w-0 items-center gap-3;
+}
+
+.skill-index {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-extrabold text-violet-700;
+    background: #f3e8ff;
+}
+
+.skill-identity h3 {
+    @apply break-words text-base font-bold text-slate-800;
+}
+
+.skill-category {
+    @apply mt-1 inline-block rounded-md px-2 py-1 text-[10px] font-semibold text-slate-500;
+    background: #f1f5f9;
+}
+
+.selected-level {
+    @apply self-start rounded-full px-3 py-1.5 text-xs font-bold sm:self-center;
+}
+
+.not-rated-label {
+    @apply self-start text-xs font-medium text-slate-400 sm:self-center;
+}
+
+.skill-level-options {
+    @apply mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-5;
+}
+
+.skill-level-option {
+    @apply relative flex cursor-pointer items-center gap-3 rounded-xl p-3;
+    border: 1px solid #eeeaf7;
+    background: white;
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
+}
+
+.skill-level-option:hover {
+    border-color: #c4b5fd;
+    transform: translateY(-1px);
+}
+
+.skill-level-option:focus-within {
+    outline: 2px solid #a78bfa;
+    outline-offset: 2px;
+}
+
+.skill-level-option input {
+    @apply sr-only;
+}
+
+.level-option-number {
+    @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-sm font-extrabold;
+    color: #64748b;
+    background: #f1f5f9;
+}
+
+.level-option-label {
+    @apply block text-sm font-bold text-slate-700;
+}
+
+.level-option-description {
+    @apply mt-0.5 block text-[10px] leading-4 text-slate-500;
+}
+
+.skill-level-option.is-selected {
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 2px rgb(139 92 246 / 8%);
+}
+
+.skill-level-option.is-selected .level-option-number {
+    color: white;
+    background: #7c3aed;
+}
+
+.skill-level-option.is-selected.level-1 {
+    border-color: #fca5a5;
+    background: #fff7f7;
+}
+
+.skill-level-option.is-selected.level-1 .level-option-number {
+    background: #dc2626;
+}
+
+.skill-level-option.is-selected.level-2 {
+    border-color: #fdba74;
+    background: #fffaf5;
+}
+
+.skill-level-option.is-selected.level-2 .level-option-number {
+    background: #ea580c;
+}
+
+.skill-level-option.is-selected.level-3 {
+    border-color: #fcd34d;
+    background: #fffdf3;
+}
+
+.skill-level-option.is-selected.level-3 .level-option-number {
+    background: #ca8a04;
+}
+
+.skill-level-option.is-selected.level-4 {
+    border-color: #6ee7b7;
+    background: #f3fdf8;
+}
+
+.skill-level-option.is-selected.level-4 .level-option-number {
+    background: #059669;
+}
+
+.skill-level-option.is-selected.level-5 {
+    border-color: #c4b5fd;
+    background: #faf7ff;
+}
+
+.skill-level-option.is-selected.level-5 .level-option-number {
+    background: #7c3aed;
+}
+
+/* Submit */
+
+.assessment-submit-row {
+    @apply mt-6 flex flex-col gap-4 border-t border-slate-100 pt-5 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.assessment-submit-row>p {
+    @apply flex items-start gap-2 text-xs leading-5 text-slate-500;
+}
+
+.submit-info-icon {
+    @apply shrink-0 text-base font-bold text-violet-500;
+}
+
+.assessment-submit-button {
+    @apply inline-flex min-h-12 items-center justify-center gap-3 rounded-xl px-6 py-3 text-sm font-bold text-white;
+    background: linear-gradient(100deg, #6d28d9, #a21caf);
+    box-shadow: 0 6px 15px rgb(109 40 217 / 20%);
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        opacity 180ms ease;
+}
+
+.assessment-submit-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgb(109 40 217 / 25%);
+}
+
+.assessment-submit-button:focus-visible {
+    outline: 3px solid #c4b5fd;
+    outline-offset: 3px;
+}
+
+.assessment-submit-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.button-spinner,
+.small-spinner,
+.assessment-spinner {
+    @apply inline-block shrink-0 rounded-full;
+    border: 2px solid rgb(255 255 255 / 35%);
+    border-top-color: white;
+    animation: spinner-turn 700ms linear infinite;
+}
+
+.button-spinner {
+    @apply h-4 w-4;
+}
+
+.small-spinner {
+    @apply h-4 w-4;
+    border-color: #ddd6fe;
+    border-top-color: #7c3aed;
+}
+
+@keyframes spinner-turn {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Results grid */
+
+.assessment-results-grid {
+    @apply grid grid-cols-1 items-start gap-6 xl:grid-cols-2;
+}
+
+.results-panel {
+    @apply h-full;
+}
+
+.compact-heading {
+    @apply gap-3;
+}
+
+.compact-heading h2 {
+    @apply text-xl;
+}
+
+.results-heading-icon {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-2xl text-violet-700;
+    background: #f3e8ff;
+}
+
+.latest-skill-list {
+    @apply mt-6 flex flex-col gap-5;
+}
+
+.latest-skill-heading {
+    @apply mb-2 flex items-center justify-between gap-3 text-sm;
+}
+
+.latest-skill-heading span {
+    @apply font-semibold text-slate-700;
+}
+
+.latest-skill-heading strong {
+    @apply shrink-0 font-extrabold text-violet-700;
+}
+
+.latest-skill-track {
+    @apply h-2;
+}
+
+.latest-skill-fill {
+    @apply h-full rounded-full;
+    background: linear-gradient(90deg, #7c3aed, #c026d3);
+    transition: width 300ms ease;
+}
+
+/* History */
+
+.assessment-history-list {
+    @apply mt-6 flex flex-col;
+}
+
+.history-card {
+    @apply relative flex gap-3 pb-6;
+}
+
+.history-card:not(:last-child)::before {
+    content: "";
+    @apply absolute left-4 top-9 h-full;
+    border-left: 1px dashed #ddd6fe;
+}
+
+.history-timeline-marker {
+    @apply relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold text-violet-700;
+    background: #ede9fe;
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px #ddd6fe;
+}
+
+.history-card-content {
+    @apply min-w-0 flex-1 rounded-xl px-4 py-3;
+    background: #faf9ff;
+    border: 1px solid #f0ebfa;
+}
+
+.history-card-content h3 {
+    @apply break-words text-sm font-bold text-slate-800;
+}
+
+.history-date {
+    @apply mt-1 text-xs text-slate-500;
+}
+
+.history-card-footer {
+    @apply mt-3 flex flex-wrap items-center justify-between gap-3;
+}
+
+.history-card-footer>span {
+    @apply rounded-full px-3 py-1 text-xs font-semibold text-violet-700;
+    background: #ede9fe;
+}
+
+.history-details {
+    @apply text-xs font-semibold text-violet-700;
+}
+
+.history-details summary {
+    @apply cursor-pointer rounded-md px-2 py-1;
+}
+
+.history-details summary:focus-visible {
+    outline: 2px solid #a78bfa;
+    outline-offset: 2px;
+}
+
+.history-details ul {
+    @apply mt-3 flex flex-col gap-2 border-t border-violet-100 pt-3;
+}
+
+.history-details li {
+    @apply flex items-start justify-between gap-3 text-xs text-slate-600;
+}
+
+.history-details li strong {
+    @apply shrink-0 text-violet-700;
+}
+
+.history-loading {
+    @apply mt-5 flex items-center gap-2 text-sm text-slate-500;
+}
+
+/* Empty, loading and error screens */
+
+.assessment-empty {
+    @apply flex flex-col items-center justify-center px-5 py-12 text-center;
+}
+
+.compact-empty {
+    @apply py-10;
+}
+
+.empty-illustration {
+    @apply mb-4 flex h-14 w-14 items-center justify-center rounded-2xl text-3xl text-violet-600;
+    background: #f3e8ff;
+}
+
+.assessment-empty h3 {
+    @apply text-base font-bold text-slate-800;
+}
+
+.assessment-empty p {
+    @apply mt-2 max-w-sm text-sm leading-6 text-slate-500;
+}
+
+.assessment-loading,
+.assessment-error-card {
+    @apply mx-auto mt-16 flex max-w-xl flex-col items-center rounded-3xl p-8 text-center sm:p-12;
+    background: white;
+    border: 1px solid #eeeaf7;
+    box-shadow: 0 10px 30px rgb(49 24 92 / 6%);
+}
+
+.assessment-spinner {
+    @apply mb-5 h-10 w-10;
+    border-color: #ddd6fe;
+    border-top-color: #7c3aed;
+    border-width: 3px;
+}
+
+.assessment-loading h2,
+.assessment-error-card h1 {
+    @apply text-xl font-extrabold text-slate-900;
+}
+
+.assessment-loading p,
+.assessment-error-card p {
+    @apply mt-3 text-sm leading-6 text-slate-500;
+}
+
+.assessment-status-icon {
+    @apply mb-4 flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold text-rose-700;
+    background: #ffe4e6;
+}
+
+/* Footer */
+
+.assessment-footer {
+    @apply flex flex-wrap items-center justify-center gap-2 px-4 pb-3 text-center text-xs leading-5 text-slate-500;
+}
+
+.assessment-footer>span {
+    @apply text-base text-violet-500;
+}
+
+/* Responsive */
+
+@media (max-width: 639px) {
+    .assessment-page {
+        @apply px-3 py-5;
+    }
+
+    .assessment-container {
+        @apply gap-5;
+    }
+
+    .assessment-hero {
+        @apply rounded-2xl px-5 py-7;
+    }
+
+    .assessment-hero h1 {
+        @apply text-3xl;
+    }
+
+    .assessment-hero-description {
+        @apply text-sm leading-6;
+    }
+
+    .assessment-panel {
+        @apply rounded-2xl p-4;
+    }
+
+    .panel-heading h2 {
+        @apply text-xl;
+    }
+
+    .skill-rating-card {
+        @apply p-3;
+    }
+
+    .skill-level-option {
+        @apply p-2.5;
+    }
+
+    .assessment-submit-button {
+        @apply w-full;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-orbit-two,
+    .assessment-spinner,
+    .button-spinner,
+    .small-spinner {
+        animation: none;
+    }
+
+    .overview-card,
+    .skill-rating-card,
+    .skill-level-option,
+    .assessment-submit-button {
+        transition: none;
+    }
+}

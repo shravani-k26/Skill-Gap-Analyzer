@@ -1,0 +1,345 @@
+@reference "../../styles/globals.css";
+
+.role-page {
+    @apply min-h-screen bg-[#f8f7ff] px-4 py-6 sm:px-6 sm:py-8 lg:px-10;
+}
+
+.role-container {
+    @apply mx-auto max-w-7xl;
+}
+
+/* Hero */
+
+.role-hero {
+    @apply relative isolate overflow-hidden rounded-[2rem] bg-gradient-to-br from-violet-800 via-purple-700 to-indigo-950 p-7 text-white shadow-xl shadow-violet-200/50 sm:p-10 lg:flex lg:min-h-[350px] lg:items-center lg:justify-between lg:gap-8 lg:p-14;
+}
+
+.role-hero-glow {
+    @apply pointer-events-none absolute -z-10 rounded-full blur-3xl;
+}
+
+.role-hero-glow-one {
+    @apply -right-16 -top-20 h-72 w-72 bg-fuchsia-400/30;
+}
+
+.role-hero-glow-two {
+    @apply -bottom-28 left-1/4 h-72 w-72 bg-cyan-400/20;
+}
+
+.role-hero-content {
+    @apply relative z-10 max-w-2xl;
+}
+
+.role-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-bold tracking-[0.15em] text-violet-100 backdrop-blur-sm;
+}
+
+.role-eyebrow-dot {
+    @apply h-2 w-2 rounded-full bg-emerald-300;
+}
+
+.role-hero-title {
+    @apply mt-6 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl;
+}
+
+.role-hero-accent {
+    @apply block text-fuchsia-300;
+}
+
+.role-hero-description {
+    @apply mt-5 max-w-xl text-sm leading-7 text-violet-100 sm:text-base sm:leading-8;
+}
+
+.role-hero-points {
+    @apply mt-7 flex flex-wrap gap-x-6 gap-y-3;
+}
+
+.role-hero-point {
+    @apply inline-flex items-center gap-2 text-xs font-semibold text-white/90 sm:text-sm;
+}
+
+.role-point-check {
+    @apply flex h-5 w-5 items-center justify-center rounded-full bg-emerald-300/20 text-xs text-emerald-200;
+}
+
+/* Decorative hero illustration */
+
+.role-hero-art {
+    @apply relative mx-auto mt-10 hidden h-56 w-56 shrink-0 items-center justify-center lg:flex;
+}
+
+.role-art-orbit {
+    @apply absolute rounded-full border border-white/15;
+}
+
+.role-art-orbit-outer {
+    @apply h-56 w-56 rotate-12;
+}
+
+.role-art-orbit-inner {
+    @apply h-40 w-40 -rotate-12 border-fuchsia-200/30;
+}
+
+.role-art-center {
+    @apply relative flex h-28 w-28 flex-col items-center justify-center rounded-[2rem] border border-white/20 bg-white/10 shadow-2xl shadow-indigo-950/30 backdrop-blur-xl;
+}
+
+.role-art-sparkle {
+    @apply absolute -right-2 -top-3 text-2xl text-fuchsia-300;
+}
+
+.role-art-code {
+    @apply text-4xl font-black tracking-tight text-white;
+}
+
+.role-art-caption {
+    @apply mt-2 text-[8px] font-bold tracking-[0.15em] text-violet-200;
+}
+
+.role-art-chip {
+    @apply absolute rounded-full border border-white/20 bg-white/10 px-3 py-2 text-xs font-bold text-white shadow-lg backdrop-blur-md;
+}
+
+.role-art-chip-top {
+    @apply -right-1 top-7;
+}
+
+.role-art-chip-bottom {
+    @apply -bottom-1 left-0;
+}
+
+/* Main content */
+
+.role-main-section {
+    @apply mt-10 sm:mt-12;
+}
+
+.role-section-heading {
+    @apply mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between;
+}
+
+.role-section-kicker {
+    @apply text-[11px] font-bold tracking-[0.16em] text-fuchsia-700;
+}
+
+.role-section-title {
+    @apply mt-2 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl;
+}
+
+.role-section-description {
+    @apply mt-2 text-sm leading-6 text-slate-500;
+}
+
+.role-count-card {
+    @apply inline-flex w-fit items-center gap-3 rounded-2xl border border-violet-100 bg-white px-4 py-3 shadow-sm shadow-violet-100/50;
+}
+
+.role-count-icon {
+    @apply flex h-11 w-11 items-center justify-center rounded-xl bg-violet-100 text-2xl text-violet-700;
+}
+
+.role-count-number {
+    @apply block text-xl font-black leading-tight text-slate-900;
+}
+
+.role-count-label {
+    @apply mt-1 block text-xs font-medium text-slate-500;
+}
+
+/* Alerts */
+
+.role-alert {
+    @apply mb-5 flex items-start gap-3 rounded-2xl border px-4 py-4 text-sm leading-6;
+}
+
+.role-alert-error {
+    @apply border-red-200 bg-red-50 text-red-800;
+}
+
+.role-alert-icon {
+    @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-red-100 font-black text-red-700;
+}
+
+.role-alert strong {
+    @apply font-bold;
+}
+
+.role-alert p {
+    @apply mt-1 break-words;
+}
+
+/* Role selector */
+
+.role-selector-card {
+    @apply flex flex-col gap-4 rounded-3xl border border-violet-100 bg-white p-5 shadow-lg shadow-violet-100/40 sm:flex-row sm:items-start sm:p-7;
+}
+
+.role-selector-icon {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-100 to-fuchsia-100 text-2xl font-bold text-violet-700;
+}
+
+.role-selector-content {
+    @apply min-w-0 flex-1;
+}
+
+.role-selector-label {
+    @apply block text-sm font-bold text-slate-800;
+}
+
+.role-selector-help {
+    @apply mt-1 text-xs leading-5 text-slate-500 sm:text-sm;
+}
+
+.role-select {
+    @apply mt-4 w-full cursor-pointer appearance-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm font-medium text-slate-800 outline-none transition hover:border-violet-300 focus:border-violet-500 focus:bg-white focus:ring-4 focus:ring-violet-100;
+}
+
+/* Empty states */
+
+.role-empty-state {
+    @apply mt-6 flex flex-col items-center rounded-3xl border border-dashed border-violet-200 bg-white/70 px-6 py-12 text-center sm:px-10 sm:py-16;
+}
+
+.role-empty-state-compact {
+    @apply mt-5 py-10;
+}
+
+.role-empty-icon {
+    @apply flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-100 to-fuchsia-100 text-3xl font-bold text-violet-700;
+}
+
+.role-empty-title {
+    @apply mt-5 text-xl font-black tracking-tight text-slate-800;
+}
+
+.role-empty-description {
+    @apply mt-2 max-w-lg text-sm leading-7 text-slate-500;
+}
+
+/* Results section */
+
+.role-results-section {
+    @apply mt-10 sm:mt-12;
+}
+
+.role-results-heading {
+    @apply mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between;
+}
+
+.role-results-title {
+    @apply mt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl;
+}
+
+.role-results-description {
+    @apply mt-2 text-sm leading-6 text-slate-500;
+}
+
+.role-results-description strong {
+    @apply font-bold text-violet-700;
+}
+
+.role-skills-count {
+    @apply inline-flex w-fit items-center rounded-full border border-violet-100 bg-violet-50 px-4 py-2 text-xs font-bold text-violet-700;
+}
+
+/* Loading states */
+
+.role-loading-panel {
+    @apply mx-auto flex min-h-[65vh] max-w-md flex-col items-center justify-center px-6 text-center;
+}
+
+.role-spinner {
+    @apply h-12 w-12 animate-spin rounded-full border-4 border-violet-100 border-t-violet-700;
+}
+
+.role-spinner-small {
+    @apply h-8 w-8 shrink-0 border-[3px];
+}
+
+.role-loading-title {
+    @apply mt-5 text-base font-bold text-slate-800;
+}
+
+.role-loading-description {
+    @apply mt-2 text-sm leading-6 text-slate-500;
+}
+
+.role-inline-loading {
+    @apply flex items-center gap-4 rounded-2xl border border-violet-100 bg-white p-6 shadow-sm;
+}
+
+.role-inline-loading .role-loading-title {
+    @apply mt-0;
+}
+
+/* Skill cards */
+
+.role-skills-grid {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3;
+}
+
+.role-skill-card {
+    @apply relative overflow-hidden rounded-3xl border border-violet-100 bg-white p-5 shadow-sm shadow-violet-100/50 transition duration-200 hover:-translate-y-1 hover:border-violet-200 hover:shadow-xl hover:shadow-violet-100/70 sm:p-6;
+}
+
+.role-skill-card-top {
+    @apply flex items-center justify-between gap-3;
+}
+
+.role-skill-index {
+    @apply text-xs font-black tracking-widest text-violet-300;
+}
+
+.role-skill-status {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-emerald-700;
+}
+
+.role-skill-status-dot {
+    @apply h-1.5 w-1.5 rounded-full bg-emerald-500;
+}
+
+.role-skill-icon {
+    @apply mt-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-100 to-fuchsia-100 text-2xl font-bold text-violet-700;
+}
+
+.role-skill-name {
+    @apply mt-4 break-words text-lg font-black tracking-tight text-slate-900;
+}
+
+.role-skill-category {
+    @apply mt-1 text-sm text-slate-500;
+}
+
+.role-skill-card-divider {
+    @apply my-5 h-px bg-slate-100;
+}
+
+.role-skill-meta {
+    @apply flex flex-wrap items-center justify-between gap-3;
+}
+
+.role-skill-meta-label {
+    @apply text-xs font-medium text-slate-500;
+}
+
+.role-requirement-badge {
+    @apply max-w-full break-words rounded-lg border border-violet-100 bg-violet-50 px-3 py-1.5 text-xs font-bold text-violet-700;
+}
+
+/* Footer */
+
+.role-footer {
+    @apply mt-12 flex flex-col items-center justify-center gap-3 border-t border-violet-100 py-7 text-center sm:flex-row;
+}
+
+.role-footer-mark {
+    @apply flex h-8 w-8 items-center justify-center rounded-xl bg-violet-700 text-sm font-black text-white;
+}
+
+.role-footer p {
+    @apply text-xs leading-5 text-slate-400;
+}
+
+.role-footer-separator {
+    @apply mx-2 text-fuchsia-500;
+}

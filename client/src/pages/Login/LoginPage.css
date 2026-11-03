@@ -1,4 +1,3 @@
-
 @reference "../../styles/globals.css";
 
 .login-page {
@@ -6,17 +5,11 @@
 }
 
 .login-layout {
-  @apply mx-auto grid min-h-[calc(100vh-1.5rem)] max-w-7xl
-    overflow-hidden rounded-[2rem] bg-white
-    shadow-2xl shadow-violet-200/50
-    sm:min-h-[calc(100vh-2.5rem)] lg:grid-cols-2;
+  @apply mx-auto grid min-h-[calc(100vh-1.5rem)] max-w-7xl overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-violet-200/50 sm:min-h-[calc(100vh-2.5rem)] lg:grid-cols-2;
 }
 
 .login-brand {
-  @apply relative flex min-h-[300px] flex-col justify-between
-    overflow-hidden bg-gradient-to-br from-violet-700
-    via-purple-700 to-indigo-900 p-7 text-white
-    sm:p-10 lg:min-h-full lg:p-14;
+  @apply relative flex min-h-[300px] flex-col justify-between overflow-hidden bg-gradient-to-br from-violet-700 via-purple-700 to-indigo-900 p-7 text-white sm:p-10 lg:min-h-full lg:p-14;
 }
 
 .login-glow {
@@ -36,14 +29,11 @@
 }
 
 .login-logo {
-  @apply inline-flex items-center gap-3 rounded-xl
-    focus:outline-none focus:ring-2 focus:ring-white;
+  @apply inline-flex items-center gap-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-white;
 }
 
 .login-logo-icon {
-  @apply flex h-11 w-11 items-center justify-center
-    rounded-2xl bg-white text-xl font-black
-    text-violet-700 shadow-lg;
+  @apply flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-xl font-black text-violet-700 shadow-lg;
 }
 
 .login-logo-text {
@@ -59,10 +49,7 @@
 }
 
 .login-eyebrow {
-  @apply inline-flex items-center gap-2 rounded-full
-    border border-white/20 bg-white/10 px-4 py-2
-    text-xs font-semibold tracking-wide text-violet-100
-    backdrop-blur-sm;
+  @apply inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold tracking-wide text-violet-100 backdrop-blur-sm;
 }
 
 .login-status-dot {
@@ -70,8 +57,7 @@
 }
 
 .login-title {
-  @apply mt-6 text-4xl font-black leading-tight tracking-tight
-    sm:text-5xl lg:text-6xl;
+  @apply mt-6 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl;
 }
 
 .login-title-accent {
@@ -83,18 +69,15 @@
 }
 
 .login-feature-grid {
-  @apply relative z-10 mt-10 grid max-w-lg
-    grid-cols-2 gap-3 sm:gap-4;
+  @apply relative z-10 mt-10 grid max-w-lg grid-cols-2 gap-3 sm:gap-4;
 }
 
 .login-feature {
-  @apply rounded-2xl border border-white/15 bg-white/10
-    p-4 backdrop-blur-md sm:p-5;
+  @apply rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md sm:p-5;
 }
 
 .login-feature-icon {
-  @apply flex h-10 w-10 items-center justify-center
-    rounded-xl bg-pink-400/20 text-xl;
+  @apply flex h-10 w-10 items-center justify-center rounded-xl bg-pink-400/20 text-xl;
 }
 
 .login-feature-icon-cyan {
@@ -114,8 +97,7 @@
 }
 
 .login-form-panel {
-  @apply flex items-center justify-center px-6 py-10
-    sm:px-12 sm:py-14 lg:px-14;
+  @apply flex items-center justify-center px-6 py-10 sm:px-12 sm:py-14 lg:px-14;
 }
 
 .login-form-content {
@@ -127,13 +109,11 @@
 }
 
 .login-badge {
-  @apply inline-flex rounded-full bg-fuchsia-50 px-3 py-1.5
-    text-xs font-bold uppercase tracking-wider text-fuchsia-700;
+  @apply inline-flex rounded-full bg-fuchsia-50 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-fuchsia-700;
 }
 
 .login-form-title {
-  @apply mt-5 text-3xl font-black tracking-tight
-    text-slate-900 sm:text-4xl;
+  @apply mt-5 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl;
 }
 
 .login-form-title-accent {
@@ -157,11 +137,7 @@
 }
 
 .login-input {
-  @apply w-full rounded-xl border border-slate-200
-    bg-slate-50 px-4 py-3.5 text-sm text-slate-900
-    outline-none transition placeholder:text-slate-400
-    hover:border-violet-300 focus:border-violet-500
-    focus:bg-white focus:ring-4 focus:ring-violet-100;
+  @apply w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-violet-300 focus:border-violet-500 focus:bg-white focus:ring-4 focus:ring-violet-100;
 }
 
 .login-password-input {
@@ -169,27 +145,15 @@
 }
 
 .login-password-toggle {
-  @apply absolute inset-y-0 right-3 my-auto rounded-md
-    px-2 text-xs font-bold text-violet-700
-    hover:bg-violet-50 focus:outline-none
-    focus:ring-2 focus:ring-violet-400;
+  @apply absolute inset-y-0 right-3 my-auto rounded-md px-2 text-xs font-bold text-violet-700 hover:bg-violet-50 focus:outline-none focus:ring-2 focus:ring-violet-400;
 }
 
 .login-error {
-  @apply rounded-xl border border-red-200 bg-red-50
-    px-4 py-3 text-sm leading-6 text-red-700;
+  @apply rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm leading-6 text-red-700;
 }
 
 .login-submit {
-  @apply flex w-full items-center justify-center gap-2
-    rounded-xl bg-gradient-to-r from-violet-700 to-fuchsia-600
-    px-5 py-4 text-sm font-bold text-white
-    shadow-lg shadow-violet-200 transition
-    hover:-translate-y-0.5 hover:from-violet-800
-    hover:to-fuchsia-700 hover:shadow-xl
-    focus:outline-none focus:ring-4 focus:ring-violet-200
-    disabled:cursor-not-allowed disabled:opacity-60
-    disabled:hover:translate-y-0;
+  @apply flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-700 to-fuchsia-600 px-5 py-4 text-sm font-bold text-white shadow-lg shadow-violet-200 transition hover:-translate-y-0.5 hover:from-violet-800 hover:to-fuchsia-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-violet-200 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
 }
 
 .login-submit-arrow {
@@ -217,8 +181,7 @@
 }
 
 .login-tip-icon {
-  @apply flex h-9 w-9 shrink-0 items-center justify-center
-    rounded-xl bg-white text-lg shadow-sm;
+  @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-lg shadow-sm;
 }
 
 .login-tip-title {
@@ -227,6 +190,32 @@
 
 .login-tip-description {
   @apply mt-1 text-xs leading-5 text-slate-500;
+}
+
+.login-register-link {
+  margin-top: 22px;
+  text-align: center;
+  color: #746b82;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.login-register-link a {
+  color: #7c3aed;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.login-register-link a:hover {
+  color: #5b21b6;
+  text-decoration: underline;
+}
+
+.login-register-link a:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 4px;
+  border-radius: 3px;
 }
 
 .login-footer {

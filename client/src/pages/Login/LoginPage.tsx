@@ -202,6 +202,10 @@ function LoginPage() {
                   </span>
                 )}
               </button>
+              <p className="login-register-link">
+  Don&apos;t have an account?{" "}
+  <a href="/register">Register</a>
+</p>
             </form>
 
             <div className="login-divider">
