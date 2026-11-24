@@ -1,3 +1,4 @@
+
 import { Router } from "express";
 
 import authenticateUser from "../middleware/auth.middleware.js";
@@ -14,8 +15,9 @@ import {
   getMyAIDependencySuggestions,
   decideMyAIDependency,
   getMySkillGapComparison,
+  generateMyLearningRecommendations,
+  getMyLearningRecommendations,
 } from "../controllers/learner.controller.js";
-
 
 const router = Router();
 
@@ -31,20 +33,24 @@ router.get("/me/skills", getMySkills);
 router.post("/me/assessments", submitAssessment);
 router.get("/me/assessments", getMyAssessmentHistory);
 router.get("/me/assessments/:id", getMyAssessmentById);
+
+// Skill gap analysis
 router.get(
   "/me/skill-gap-analysis/:jobDescriptionId",
   getMySkillGapAnalysis
 );
+
+// AI dependency suggestions
 router.post(
   "/me/ai-dependencies/:jobDescriptionId",
   generateMyAIDependencies
 );
-// Retrieve AI suggestions for a role.
+
 router.get(
   "/me/ai-dependencies/role/:roleId",
   getMyAIDependencySuggestions
 );
-// Accept or reject an individual AI suggestion.
+
 router.put(
   "/me/ai-dependencies/role/:roleId/:dependencyId/decision",
   decideMyAIDependency
@@ -54,6 +60,17 @@ router.put(
 router.get(
   "/me/skill-gap-comparison/:jobDescriptionId",
   getMySkillGapComparison
+);
+
+// Personalized learning recommendations
+router.post(
+  "/me/learning-recommendations",
+  generateMyLearningRecommendations
+);
+
+router.get(
+  "/me/learning-recommendations",
+  getMyLearningRecommendations
 );
 
 export default router;

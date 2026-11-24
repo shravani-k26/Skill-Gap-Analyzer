@@ -35,6 +35,11 @@ import {
   compareSkillGapMethods,
 } from "../services/skillGapComparison.service.js";
 
+import {
+  generateLearningRecommendations,
+  getLatestLearningRecommendations,
+} from "../services/learningRecommendation.service.js";
+
 // Create or update the authenticated user's profile.
 export const saveProfile = asyncHandler(
   async (req: Request, res: Response) => {
@@ -329,6 +334,45 @@ export const getMySkillGapComparison = asyncHandler(
       success: true,
       message: "Skill gap comparison completed successfully",
       data: comparison,
+    });
+  }
+);
+// Generate personalized learning recommendations for the authenticated learner.
+export const generateMyLearningRecommendations = asyncHandler(
+  async (req: Request, res: Response) => {
+    const userId = req.userId;
+
+    if (!userId) {
+      throw new ApiError(401, "Authentication required");
+    }
+
+    const recommendations =
+      await generateLearningRecommendations(userId);
+
+    return res.status(201).json({
+      success: true,
+      message: "Learning recommendations generated successfully",
+      data: recommendations,
+    });
+  }
+);
+
+// Retrieve the latest learning recommendations for the authenticated learner.
+export const getMyLearningRecommendations = asyncHandler(
+  async (req: Request, res: Response) => {
+    const userId = req.userId;
+
+    if (!userId) {
+      throw new ApiError(401, "Authentication required");
+    }
+
+    const recommendations =
+      await getLatestLearningRecommendations(userId);
+
+    return res.status(200).json({
+      success: true,
+      message: "Learning recommendations retrieved successfully",
+      data: recommendations,
     });
   }
 );

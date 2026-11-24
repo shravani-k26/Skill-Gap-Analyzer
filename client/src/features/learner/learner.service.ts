@@ -8,6 +8,7 @@ import type {
   SkillAssessment,
   AssessedSkillInput,
   Role,
+  LearningRecommendation,
 } from "./types";
 
 // --------------------------------------------------
@@ -313,3 +314,27 @@ export const getMySkillGapComparison = async (
 };
 
 
+
+// --------------------------------------------------
+// 7. Personalized Learning Recommendations
+// --------------------------------------------------
+
+// Generate new personalized learning recommendations.
+export const generateMyLearningRecommendations = async (): Promise<LearningRecommendation> => {
+  const response = await apiRequest<
+    ApiResponse<LearningRecommendation>
+  >("/learners/me/learning-recommendations", {
+    method: "POST",
+  });
+
+  return response.data;
+};
+
+// Retrieve the latest learning recommendations.
+export const getMyLearningRecommendations = async (): Promise<LearningRecommendation> => {
+  const response = await apiRequest<
+    ApiResponse<LearningRecommendation>
+  >("/learners/me/learning-recommendations");
+
+  return response.data;
+};
